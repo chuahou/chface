@@ -4,28 +4,28 @@
 
 .label {
   font-size: 30;
-  font-family: Seville-Book-Condensed;
+  font-family: Colfax;
   text-length: 32;
   text-anchor: start;
   fill: white;
 }
 
 #timeLabel {
-  x: 60%;
+  x: 50%;
   y: 20%;
 }
 
 #hrLabel {
-  x: 60%;
+  x: 50%;
   y: 30%;
 }
 
 #stepsLabel {
-  x: 60%;
+  x: 50%;
   y: 40%;
 }
 
 #batteryLabel {
-  x: 60%;
+  x: 50%;
   y: 50%;
 }
