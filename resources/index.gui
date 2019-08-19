@@ -13,7 +13,6 @@
   <text class="label" id="timeLabel" y="100" font-size="52" text-anchor="middle" />
   
   <!-- other labels TODO -->
-  <text class="label" id="stepsLabel" y="180" />
   <text class="label" id="batteryLabel" y="210" />
   
   <!-- heart rate -->
@@ -21,4 +20,12 @@
   <rect class="borderRectInner" id="hrBorderInner" y="121" />
   <rect class="fillRect" id="hrFill" y="123" fill="firebrick" />
   <text class="label" id="hrLabel" x="280" y="140" />
+  
+  <!-- steps -->
+  <rect class="borderRectOuter" id="stepsBorderOuter" y="150" />
+  <rect class="borderRectInner" id="stepsBorderInner" y="151" />
+  <rect class="fillRect" id="stepsFill1" y="153" fill="navy" />
+  <rect class="fillRect" id="stepsFill2" y="153" fill="mediumblue" width="100" />
+  <rect class="fillRect" id="stepsFill3" y="153" fill="royalblue" width="30" />
+  <text class="label" id="stepsLabel" x="280" y="170" />
 </svg>

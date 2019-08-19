@@ -16,6 +16,11 @@ const msPerDay = 86400000.0;
 // max HR
 const maxHr = 220.0;
 
+// step boundaries
+const stepBoundary1 = 10000.0;
+const stepBoundary2 = 15000.0;
+const stepBoundary3 = 20000.0;
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
@@ -23,6 +28,9 @@ const stepsLabel = document.getElementById("stepsLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const timeFill = document.getElementById("timeFill");
 const hrFill = document.getElementById("hrFill");
+const stepsFill1 = document.getElementById("stepsFill1");
+const stepsFill2 = document.getElementById("stepsFill2");
+const stepsFill3 = document.getElementById("stepsFill3");
 
 // get initial widths
 const initWidth = timeFill.width;
@@ -56,6 +64,26 @@ clock.ontick = (event) =>
   if (appbit.permissions.granted("access_activity"))
   {
     stepsLabel.text = `${today.adjusted.steps}`;
+    let steps = today.adjusted.steps;
+    if (steps < stepBoundary1)
+    {
+      stepsFill1.width = (steps / stepBoundary1) * initWidth;
+      stepsFill2.width = 0;
+      stepsFill3.width = 0;
+    }
+    else if (steps < stepBoundary2)
+    {
+      stepsFill1.width = initWidth;
+      stepsFill2.width = ((steps - stepBoundary1) / (stepBoundary2 - stepBoundary1)) * initWidth;
+      stepsFill3.width = 0;
+    }
+    else
+    {
+      stepsFill1.width = initWidth;
+      stepsFill2.width = initWidth;
+      stepsFill3.width = ((steps - stepBoundary2) / (stepBoundary3 - stepBoundary2)) * initWidth;
+      stepsFill3.width = (stepsFill3.width > initWidth) ? initWidth : stepsFill3.width;
+    }
   }
   
   // update battery
