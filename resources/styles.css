@@ -2,9 +2,9 @@
   viewport-fill: black;
 }
 
-#myLabel {
+.label {
   font-size: 80;
-  font-family: Seville-Bold-Condensed;
+  font-family: Seville-Book-Condensed;
   text-length: 32;
   text-anchor: middle;
   x: 50%;

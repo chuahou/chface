@@ -3,23 +3,39 @@ import document from "document";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
 
-// Update the clock every minute
-clock.granularity = "minutes";
+// tick every second
+clock.granularity = "seconds";
 
-// Get a handle on the <text> element
-const myLabel = document.getElementById("myLabel");
+// get elements to update
+const timeLabel = document.getElementById("timeLabel");
 
-// Update the <text> element every tick with the current time
-clock.ontick = (evt) => {
-  let today = evt.date;
+// update elements every tick
+clock.ontick = (event) =>
+{
+  updateTimeLabel(timeLabel, event);
+}
+
+// update time label
+function updateTimeLabel(_timeLabel, _event)
+{
+  // get hours, minutes and seconds
+  let today = _event.date;
   let hours = today.getHours();
-  if (preferences.clockDisplay === "12h") {
-    // 12h format
-    hours = hours % 12 || 12;
-  } else {
-    // 24h format
-    hours = util.zeroPad(hours);
+  let mins = today.getMinutes();
+  let secs = today.getSeconds();
+  
+  // convert to 12h clock if necessary
+  if (preferences.clockDisplay === "12h")
+  {
+    hours = hours % 12;
+    hours = (hours == 0) ? 12 : hours; // convert 0 to 12
   }
-  let mins = util.zeroPad(today.getMinutes());
-  myLabel.text = `${hours}:${mins}`;
+  
+  // zero pad every number
+  hours = util.zeroPad(hours);
+  mins = util.zeroPad(mins);
+  secs = util.zeroPad(secs);
+  
+  // set text
+  _timeLabel.text = `${hours}:${mins}:${secs}`;
 }
