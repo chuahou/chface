@@ -3,7 +3,7 @@
   <!-- time bar  -->
   <rect class="borderRectOuter" id="timeBorderOuter" y="20" />
   <rect class="borderRectInner" id="timeBorderInner" y="21" />
-  <rect class="fillRect" id="timeFill" y="22" fill="gold" />
+  <rect class="fillRect" id="timeFill" y="23" fill="gold" />
   
   <!-- hard coded 7 am and 11 pm lines -->
   <rect x="94" y="18" height="29" width="1" fill="white" />
