@@ -1,35 +1,38 @@
 <svg class="background">
   
   <!-- time bar  -->
-  <rect class="borderRectOuter" id="timeBorderOuter" y="20" />
-  <rect class="borderRectInner" id="timeBorderInner" y="21" />
-  <rect class="fillRect" id="timeFill" y="23" fill="gold" />
+  <rect class="borderRectOuter" id="timeBorderOuter" y="50" />
+  <rect class="borderRectInner" id="timeBorderInner" y="51" />
+  <rect class="fillRect" id="timeFill" y="53" fill="gold" />
   
   <!-- hard coded 7 am and 11 pm lines -->
-  <rect x="94" y="18" height="29" width="1" fill="white" />
-  <rect x="274" y="18" height="29" width="1" fill="white" />
+  <rect x="94" y="48" height="29" width="1" fill="white" />
+  <rect x="274" y="48" height="29" width="1" fill="white" />
   
   <!-- time text -->
-  <text class="label" id="timeLabel" y="100" font-size="52" text-anchor="middle" />
+  <text class="label" id="timeLabel" y="131" font-size="52" text-anchor="middle" />
   
   <!-- heart rate -->
-  <rect class="borderRectOuter" id="hrBorderOuter" y="120" />
-  <rect class="borderRectInner" id="hrBorderInner" y="121" />
-  <rect class="fillRect" id="hrFill" y="123" fill="firebrick" />
-  <text class="label" id="hrLabel" x="280" y="140" />
+  <rect class="borderRectOuter" id="hrBorderOuter" y="150" />
+  <rect class="borderRectInner" id="hrBorderInner" y="151" />
+  <rect class="fillRect" id="hrFill" y="153" fill="firebrick" />
+  <text class="label" id="hrLabel" x="280" y="170" />
   
   <!-- steps -->
-  <rect class="borderRectOuter" id="stepsBorderOuter" y="150" />
-  <rect class="borderRectInner" id="stepsBorderInner" y="151" />
-  <rect class="fillRect" id="stepsFill1" y="153" fill="navy" />
-  <rect class="fillRect" id="stepsFill2" y="153" fill="mediumblue" width="100" />
-  <rect class="fillRect" id="stepsFill3" y="153" fill="royalblue" width="30" />
-  <text class="label" id="stepsLabel" x="280" y="170" />
+  <rect class="borderRectOuter" id="stepsBorderOuter" y="180" />
+  <rect class="borderRectInner" id="stepsBorderInner" y="181" />
+  <rect class="fillRect" id="stepsFill1" y="183" fill="navy" />
+  <rect class="fillRect" id="stepsFill2" y="183" fill="mediumblue" width="100" />
+  <rect class="fillRect" id="stepsFill3" y="183" fill="royalblue" width="30" />
+  <text class="label" id="stepsLabel" x="280" y="200" />
   
   <!-- battery -->
-  <rect class="borderRectOuter" id="batteryBorderOuter" y="180" />
-  <rect class="borderRectInner" id="batteryBorderInner" y="181" />
-  <rect class="fillRect" id="batteryFill2" y="183" fill="darkred" />
-  <rect class="fillRect" id="batteryFill1" y="183" fill="green" />
-  <text class="label" id="batteryLabel" x="280" y="200" />
+  <rect class="borderRectOuter" id="batteryBorderOuter" y="210" />
+  <rect class="borderRectInner" id="batteryBorderInner" y="211" />
+  <rect class="fillRect" id="batteryFill2" y="213" fill="darkred" />
+  <rect class="fillRect" id="batteryFill1" y="213" fill="green" />
+  <text class="label" id="batteryLabel" x="280" y="230" />
+  
+  <!-- additional label -->
+  <text class="label" font-size="12" text-anchor="middle" y="250">WATCH OF PROMISED PROCRASTINATION</text>
 </svg>
