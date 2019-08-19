@@ -21,6 +21,9 @@ const stepBoundary1 = 10000.0;
 const stepBoundary2 = 15000.0;
 const stepBoundary3 = 20000.0;
 
+// battery threshold to turn red
+const batteryThreshold = 40.0;
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
@@ -31,6 +34,8 @@ const hrFill = document.getElementById("hrFill");
 const stepsFill1 = document.getElementById("stepsFill1");
 const stepsFill2 = document.getElementById("stepsFill2");
 const stepsFill3 = document.getElementById("stepsFill3");
+const batteryFill1 = document.getElementById("batteryFill1");
+const batteryFill2 = document.getElementById("batteryFill2");
 
 // get initial widths
 const initWidth = timeFill.width;
@@ -88,6 +93,9 @@ clock.ontick = (event) =>
   
   // update battery
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
+  let batteryWidth = initWidth * battery.chargeLevel / 100.0;
+  batteryFill1.width = (battery.chargeLevel < batteryThreshold) ? 0 : batteryWidth;
+  batteryFill2.width = batteryWidth;
 }
 
 // update time label and fill
