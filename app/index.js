@@ -27,6 +27,25 @@ if (HeartRateSensor)
 
 // update time every tick
 clock.ontick = (event) =>
+{  
+  // update time label
+  updateTime(timeLabel, event);
+  
+  // set HR to -- if no heart rate sensor
+  if (!HeartRateSensor)
+  {
+    hrLabel.text = "--";
+  }
+  
+  // update steps
+  if (appbit.permissions.granted("access_activity"))
+  {
+    stepsLabel.text = `${today.adjusted.steps}`;
+  }
+}
+
+// update time label
+function updateTime(label, event)
 {
   // get hours, minutes and seconds
   let hours = event.date.getHours();
@@ -46,17 +65,5 @@ clock.ontick = (event) =>
   secs = util.zeroPad(secs);
   
   // set text
-  timeLabel.text = `${hours}:${mins}:${secs}`;
-  
-  // set HR to -- if no heart rate sensor
-  if (!HeartRateSensor)
-  {
-    hrLabel.text = "--";
-  }
-  
-  // update steps
-  if (appbit.permissions.granted("access_activity"))
-  {
-    stepsLabel.text = `${today.adjusted.steps}`;
-  }
+  label.text = `${hours}:${mins}:${secs}`;
 }
