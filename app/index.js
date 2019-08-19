@@ -13,12 +13,16 @@ clock.granularity = "seconds";
 // ms in a day
 const msPerDay = 86400000.0;
 
+// max HR
+const maxHr = 220.0;
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const timeFill = document.getElementById("timeFill");
+const hrFill = document.getElementById("hrFill");
 
 // get initial widths
 const initWidth = timeFill.width;
@@ -30,6 +34,7 @@ if (HeartRateSensor)
   hrm.addEventListener("reading", () =>
   {
     hrLabel.text = `${hrm.heartRate}`;
+    hrFill.width = (hrm.heartRate / maxHr) * initWidth;
   });
   hrm.start();
 }
@@ -44,6 +49,7 @@ clock.ontick = (event) =>
   if (!HeartRateSensor)
   {
     hrLabel.text = "--";
+    hrFill.width = 0;
   }
   
   // update steps

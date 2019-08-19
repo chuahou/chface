@@ -3,10 +3,10 @@
 }
 
 .label {
-  font-size: 28;
+  font-size: 22;
   font-family: Colfax;
   text-length: 32;
-  text-anchor: middle;
+  text-anchor: end;
   fill: white;
   x: 50%;
 }
@@ -29,10 +29,4 @@
   height: 19;
   width: 262;
   x: 5%+4;
-}
-
-.rectTextCover {
-  height: 30;
-  x: 50%-2;
-  fill: black;
 }

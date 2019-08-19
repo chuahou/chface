@@ -10,16 +10,15 @@
   <rect x="274" y="18" height="29" width="1" fill="white" />
   
   <!-- time text -->
-  <text class="label" id="timeLabel" y="100" font-size="52" />
+  <text class="label" id="timeLabel" y="100" font-size="52" text-anchor="middle" />
   
   <!-- other labels TODO -->
-  <text class="label" id="hrLabel" y="150" />
   <text class="label" id="stepsLabel" y="180" />
   <text class="label" id="batteryLabel" y="210" />
   
-  <!--<rect class="borderRectOuter" id="timeBorderOuter" y="40" />
-  <rect class="borderRectInner" id="timeBorderInner" y="41" />
-  <rect class="fillRect" id="timeFill" y="42" fill="gold" />
-  <rect class="rectTextCover" id="timeRectCover" y="53" width="115" />
-  <text class="label" id="timeLabel" y="75" />-->
+  <!-- heart rate -->
+  <rect class="borderRectOuter" id="hrBorderOuter" y="120" />
+  <rect class="borderRectInner" id="hrBorderInner" y="121" />
+  <rect class="fillRect" id="hrFill" y="123" fill="firebrick" />
+  <text class="label" id="hrLabel" x="280" y="140" />
 </svg>
