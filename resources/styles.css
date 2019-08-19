@@ -3,11 +3,24 @@
 }
 
 .label {
-  font-size: 80;
+  font-size: 30;
   font-family: Seville-Book-Condensed;
   text-length: 32;
-  text-anchor: middle;
-  x: 50%;
-  y: 50%+40;
-  fill: dimgray;
+  text-anchor: start;
+  fill: white;
+}
+
+#timeLabel {
+  x: 60%;
+  y: 20%;
+}
+
+#hrLabel {
+  x: 60%;
+  y: 40%;
+}
+
+#stepsLabel {
+  x: 60%;
+  y: 60%;
 }

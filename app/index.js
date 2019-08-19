@@ -1,5 +1,8 @@
 import clock from "clock";
 import document from "document";
+import { HeartRateSensor } from "heart-rate";
+import { today } from "user-activity";
+import { me as appbit } from "appbit";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
 
@@ -8,21 +11,27 @@ clock.granularity = "seconds";
 
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
+const hrLabel = document.getElementById("hrLabel");
+const stepsLabel = document.getElementById("stepsLabel");
 
-// update elements every tick
-clock.ontick = (event) =>
+// get and setup heart rate sensor
+if (HeartRateSensor)
 {
-  updateTimeLabel(timeLabel, event);
+  const hrm = new HeartRateSensor();
+  hrm.addEventListener("reading", () =>
+  {
+    hrLabel.text = `${hrm.heartRate}`;
+  });
+  hrm.start();
 }
 
-// update time label
-function updateTimeLabel(_timeLabel, _event)
+// update time every tick
+clock.ontick = (event) =>
 {
   // get hours, minutes and seconds
-  let today = _event.date;
-  let hours = today.getHours();
-  let mins = today.getMinutes();
-  let secs = today.getSeconds();
+  let hours = event.date.getHours();
+  let mins = event.date.getMinutes();
+  let secs = event.date.getSeconds();
   
   // convert to 12h clock if necessary
   if (preferences.clockDisplay === "12h")
@@ -37,5 +46,17 @@ function updateTimeLabel(_timeLabel, _event)
   secs = util.zeroPad(secs);
   
   // set text
-  _timeLabel.text = `${hours}:${mins}:${secs}`;
+  timeLabel.text = `${hours}:${mins}:${secs}`;
+  
+  // set HR to -- if no heart rate sensor
+  if (!HeartRateSensor)
+  {
+    hrLabel.text = "--";
+  }
+  
+  // update steps
+  if (appbit.permissions.granted("access_activity"))
+  {
+    stepsLabel.text = `${today.adjusted.steps}`;
+  }
 }

@@ -1,3 +1,5 @@
 <svg class="background">
   <text class="label" id="timeLabel" />
+  <text class="label" id="hrLabel" />
+  <text class="label" id="stepsLabel" />
 </svg>
