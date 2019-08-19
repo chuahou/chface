@@ -17,10 +17,15 @@
 
 #hrLabel {
   x: 60%;
-  y: 40%;
+  y: 30%;
 }
 
 #stepsLabel {
   x: 60%;
-  y: 60%;
+  y: 40%;
+}
+
+#batteryLabel {
+  x: 60%;
+  y: 50%;
 }

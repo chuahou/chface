@@ -3,6 +3,7 @@ import document from "document";
 import { HeartRateSensor } from "heart-rate";
 import { today } from "user-activity";
 import { me as appbit } from "appbit";
+import { battery } from "power";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
 
@@ -13,6 +14,7 @@ clock.granularity = "seconds";
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
+const batteryLabel = document.getElementById("batteryLabel");
 
 // get and setup heart rate sensor
 if (HeartRateSensor)
@@ -42,6 +44,9 @@ clock.ontick = (event) =>
   {
     stepsLabel.text = `${today.adjusted.steps}`;
   }
+  
+  // update battery
+  batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
 }
 
 // update time label

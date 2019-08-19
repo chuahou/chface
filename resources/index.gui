@@ -2,4 +2,5 @@
   <text class="label" id="timeLabel" />
   <text class="label" id="hrLabel" />
   <text class="label" id="stepsLabel" />
+  <text class="label" id="batteryLabel" />
 </svg>
