@@ -10,11 +10,18 @@ import * as util from "../common/utils";
 // tick every second
 clock.granularity = "seconds";
 
+// ms in a day
+const msPerDay = 86400000.0;
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
 const batteryLabel = document.getElementById("batteryLabel");
+const timeFill = document.getElementById("timeFill");
+
+// get initial widths
+const initWidth = timeFill.width;
 
 // get and setup heart rate sensor
 if (HeartRateSensor)
@@ -27,7 +34,7 @@ if (HeartRateSensor)
   hrm.start();
 }
 
-// update time every tick
+// update every tick
 clock.ontick = (event) =>
 {  
   // update time label
@@ -49,7 +56,7 @@ clock.ontick = (event) =>
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
 }
 
-// update time label
+// update time label and fill
 function updateTime(label, event)
 {
   // get hours, minutes and seconds
@@ -71,4 +78,13 @@ function updateTime(label, event)
   
   // set text
   label.text = `${hours}:${mins}:${secs}`;
+  
+  // get midnight
+  let midnight = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate(), 0, 0, 0);
+  
+  // get time since midnight
+  let diff = event.date.getTime() - midnight.getTime();
+  
+  // update fill
+  timeFill.width = initWidth * diff / msPerDay;
 }

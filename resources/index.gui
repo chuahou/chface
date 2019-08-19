@@ -1,6 +1,25 @@
 <svg class="background">
-  <text class="label" id="timeLabel" />
-  <text class="label" id="hrLabel" />
-  <text class="label" id="stepsLabel" />
-  <text class="label" id="batteryLabel" />
+  
+  <!-- time bar  -->
+  <rect class="borderRectOuter" id="timeBorderOuter" y="20" />
+  <rect class="borderRectInner" id="timeBorderInner" y="21" />
+  <rect class="fillRect" id="timeFill" y="22" fill="gold" />
+  
+  <!-- hard coded 7 am and 11 pm lines -->
+  <rect x="94" y="18" height="29" width="1" fill="white" />
+  <rect x="274" y="18" height="29" width="1" fill="white" />
+  
+  <!-- time text -->
+  <text class="label" id="timeLabel" y="100" font-size="52" />
+  
+  <!-- other labels TODO -->
+  <text class="label" id="hrLabel" y="150" />
+  <text class="label" id="stepsLabel" y="180" />
+  <text class="label" id="batteryLabel" y="210" />
+  
+  <!--<rect class="borderRectOuter" id="timeBorderOuter" y="40" />
+  <rect class="borderRectInner" id="timeBorderInner" y="41" />
+  <rect class="fillRect" id="timeFill" y="42" fill="gold" />
+  <rect class="rectTextCover" id="timeRectCover" y="53" width="115" />
+  <text class="label" id="timeLabel" y="75" />-->
 </svg>

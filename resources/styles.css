@@ -3,29 +3,36 @@
 }
 
 .label {
-  font-size: 30;
+  font-size: 28;
   font-family: Colfax;
   text-length: 32;
-  text-anchor: start;
+  text-anchor: middle;
+  fill: white;
+  x: 50%;
+}
+
+.borderRectOuter {
+  height: 25;
+  width: 270;
+  x: 5%;
   fill: white;
 }
 
-#timeLabel {
-  x: 50%;
-  y: 20%;
+.borderRectInner {
+  height: 23;
+  width: 268;
+  x: 5%+1;
+  fill: black;
 }
 
-#hrLabel {
-  x: 50%;
-  y: 30%;
+.fillRect {
+  height: 21;
+  width: 266;
+  x: 5%+2;
 }
 
-#stepsLabel {
-  x: 50%;
-  y: 40%;
-}
-
-#batteryLabel {
-  x: 50%;
-  y: 50%;
+.rectTextCover {
+  height: 30;
+  x: 50%-2;
+  fill: black;
 }
