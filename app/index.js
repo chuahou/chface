@@ -46,26 +46,68 @@ if (HeartRateSensor)
     const hrm = new HeartRateSensor();
     hrm.addEventListener("reading", () =>
     {
+        // update label and fill every reading
         hrLabel.text = `${hrm.heartRate}`;
         hrFill.width = (hrm.heartRate / maxHr) * initWidth;
     });
     hrm.start();
+}
+// set HR to -- if no heart rate sensor
+else
+{
+    hrLabel.text = "--";
+    hrFill.width = 0;
 }
 
 // update every tick
 clock.ontick = (event) =>
 {    
     // update time label
-    updateTime(timeLabel, event);
-    
-    // set HR to -- if no heart rate sensor
-    if (!HeartRateSensor)
-    {
-        hrLabel.text = "--";
-        hrFill.width = 0;
-    }
+    updateTime(event);
     
     // update steps
+    updateSteps();
+    
+    // update battery
+    updateBattery();
+}
+
+// update time label and fill
+function updateTime(event)
+{
+    // get hours, minutes and seconds
+    let hours = event.date.getHours();
+    let mins = event.date.getMinutes();
+    let secs = event.date.getSeconds();
+    
+    // convert to 12h clock if necessary
+    if (preferences.clockDisplay === "12h")
+    {
+        hours = hours % 12;
+        hours = (hours == 0) ? 12 : hours; // convert 0 to 12
+    }
+    
+    // zero pad every number
+    hours = util.zeroPad(hours);
+    mins = util.zeroPad(mins);
+    secs = util.zeroPad(secs);
+    
+    // set text
+    timeLabel.text = `${hours}:${mins}:${secs}`;
+    
+    // get midnight
+    let midnight = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate(), 0, 0, 0);
+    
+    // get time since midnight
+    let diff = event.date.getTime() - midnight.getTime();
+    
+    // update fill
+    timeFill.width = initWidth * diff / msPerDay;
+}
+
+// update steps label and fill
+function updateSteps()
+{
     if (appbit.permissions.granted("access_activity"))
     {
         stepsLabel.text = `${today.adjusted.steps}`;
@@ -90,43 +132,13 @@ clock.ontick = (event) =>
             stepsFill3.width = (stepsFill3.width > initWidth) ? initWidth : stepsFill3.width;
         }
     }
-    
-    // update battery
+}
+
+// update battery label and fill
+function updateBattery()
+{
     batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
     let batteryWidth = initWidth * battery.chargeLevel / 100.0;
     batteryFill1.width = (battery.chargeLevel < batteryThreshold) ? 0 : batteryWidth;
     batteryFill2.width = batteryWidth;
-}
-
-// update time label and fill
-function updateTime(label, event)
-{
-    // get hours, minutes and seconds
-    let hours = event.date.getHours();
-    let mins = event.date.getMinutes();
-    let secs = event.date.getSeconds();
-    
-    // convert to 12h clock if necessary
-    if (preferences.clockDisplay === "12h")
-    {
-        hours = hours % 12;
-        hours = (hours == 0) ? 12 : hours; // convert 0 to 12
-    }
-    
-    // zero pad every number
-    hours = util.zeroPad(hours);
-    mins = util.zeroPad(mins);
-    secs = util.zeroPad(secs);
-    
-    // set text
-    label.text = `${hours}:${mins}:${secs}`;
-    
-    // get midnight
-    let midnight = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate(), 0, 0, 0);
-    
-    // get time since midnight
-    let diff = event.date.getTime() - midnight.getTime();
-    
-    // update fill
-    timeFill.width = initWidth * diff / msPerDay;
 }
