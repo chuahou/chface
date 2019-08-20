@@ -1,32 +1,37 @@
-.background {
-  viewport-fill: black;
+.background
+{
+    viewport-fill: black;
 }
 
-.label {
-  font-size: 22;
-  font-family: Colfax;
-  text-length: 32;
-  text-anchor: end;
-  fill: white;
-  x: 150;
+.label
+{
+    font-size: 22;
+    font-family: Colfax;
+    text-length: 32;
+    text-anchor: end;
+    fill: white;
+    x: 150;
 }
 
-.borderRectOuter {
-  height: 25;
-  width: 270;
-  x: 15;
-  fill: white;
+.borderRectOuter
+{
+    height: 25;
+    width: 270;
+    x: 15;
+    fill: white;
 }
 
-.borderRectInner {
-  height: 23;
-  width: 268;
-  x: 16;
-  fill: black;
+.borderRectInner
+{
+    height: 23;
+    width: 268;
+    x: 16;
+    fill: black;
 }
 
-.fillRect {
-  height: 19;
-  width: 262;
-  x: 19;
+.fillRect
+{
+    height: 19;
+    width: 262;
+    x: 19;
 }
