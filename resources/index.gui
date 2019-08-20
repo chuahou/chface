@@ -6,8 +6,8 @@
   <rect class="fillRect" id="timeFill" y="53" fill="gold" />
   
   <!-- hard coded 7 am and 11 pm lines -->
-  <rect x="94" y="48" height="29" width="1" fill="white" />
-  <rect x="274" y="48" height="29" width="1" fill="white" />
+  <rect x="95" y="48" height="29" width="1" fill="white" />
+  <rect x="270" y="48" height="29" width="1" fill="white" />
   
   <!-- time text -->
   <text class="label" id="timeLabel" y="131" font-size="52" text-anchor="middle" />
