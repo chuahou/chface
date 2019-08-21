@@ -70,7 +70,7 @@ clock.ontick = (event) =>
     
     // update battery
     updateBattery();
-}
+};
 
 // update time label and fill
 function updateTime(event)
