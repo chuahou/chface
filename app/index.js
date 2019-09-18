@@ -29,6 +29,7 @@ const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
 const prevStepsLabel = document.getElementById("prevStepsLabel");
+const dateLabel = document.getElementById("dateLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const timeFill = document.getElementById("timeFill");
 const hrFill = document.getElementById("hrFill");
@@ -59,6 +60,9 @@ else
     hrLabel.text = "--";
     hrFill.width = 0;
 }
+
+// set initial date
+setDate(new Date());
 
 // update every tick
 clock.ontick = (event) =>
@@ -108,7 +112,7 @@ function updateTime(event)
     }
     else if (midnight.getDate() != prevMidnight.getDate())
     {
-        changeDate();
+        changeDate(event);
         prevMidnight = midnight;
     }
     
@@ -119,10 +123,27 @@ function updateTime(event)
     timeFill.width = initWidth * diff / msPerDay;
 }
 
-// update previous day steps
-function changeDate()
+// update previous day steps and date
+function changeDate(event)
 {
     prevStepsLabel.text = "PREV: ( " + stepsLabel.text + " )";
+    setDate(event.date);
+}
+
+// set date label
+function setDate(date)
+{
+    var week = new Array(7);
+    week[0] = "SUN";
+    week[1] = "MON";
+    week[2] = "TUE";
+    week[3] = "WED";
+    week[4] = "THU";
+    week[5] = "FRI";
+    week[6] = "SAT";
+
+    dateLabel.text = (date.getMonth() + 1) + "/" + date.getDate() + " [" +
+        week[date.getDay()] +"]";
 }
 
 // update steps label and fill

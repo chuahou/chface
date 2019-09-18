@@ -25,6 +25,9 @@
     <rect class="fillRect" id="stepsFill3" y="183" fill="royalblue" width="30" />
     <text class="label" id="stepsLabel" x="280" y="200" />
     <text class="label" id="prevStepsLabel" x="280" y="223" font-size="18">PREV: ( --- )</text>
+
+    <!-- date -->
+    <text class="label" id="dateLabel" x="20" text-anchor="start" y="223" font-size="18">1/1 [MON]</text>
     
     <!-- battery -->
     <rect class="borderRectOuter" id="batteryBorderOuter" y="230" />
