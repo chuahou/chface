@@ -1,3 +1,5 @@
+// --- IMPORTS ---
+
 import clock from "clock";
 import document from "document";
 import { HeartRateSensor } from "heart-rate";
@@ -6,6 +8,10 @@ import { me as appbit } from "appbit";
 import { battery } from "power";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
+
+
+
+// --- CONSTANTS ---
 
 // tick every second
 clock.granularity = "seconds";
@@ -24,10 +30,16 @@ const stepBoundary3 = 20000.0;
 // battery threshold to turn red
 const batteryThreshold = 40.0;
 
+
+
+// --- GUI elements ---
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
+const prevStepsLabel = document.getElementById("prevStepsLabel");
+const dateLabel = document.getElementById("dateLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const timeFill = document.getElementById("timeFill");
 const hrFill = document.getElementById("hrFill");
@@ -39,6 +51,10 @@ const batteryFill2 = document.getElementById("batteryFill2");
 
 // get initial widths
 const initWidth = timeFill.width;
+
+
+
+// --- MAIN ROUTINE ---
 
 // get and setup heart rate sensor
 if (HeartRateSensor)
@@ -59,6 +75,9 @@ else
     hrFill.width = 0;
 }
 
+// set initial date
+setDate(new Date());
+
 // update every tick
 clock.ontick = (event) =>
 {    
@@ -72,7 +91,12 @@ clock.ontick = (event) =>
     updateBattery();
 };
 
+
+
+// --- HELPER FUNCTIONS ---
+
 // update time label and fill
+var prevMidnight = null;
 function updateTime(event)
 {
     // get hours, minutes and seconds
@@ -97,12 +121,40 @@ function updateTime(event)
     
     // get midnight
     let midnight = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate(), 0, 0, 0);
+
+    // check if date has changed
+    if (prevMidnight == null)
+    {
+        prevMidnight = midnight;
+    }
+    else if (midnight.getDate() != prevMidnight.getDate())
+    {
+        prevStepsLabel.text = "PREV: ( " + stepsLabel.text + " )";
+        setDate(event.date);
+        prevMidnight = midnight;
+    }
     
     // get time since midnight
     let diff = event.date.getTime() - midnight.getTime();
     
     // update fill
     timeFill.width = initWidth * diff / msPerDay;
+}
+
+// set date label
+function setDate(date)
+{
+    var week = new Array(7);
+    week[0] = "SUN";
+    week[1] = "MON";
+    week[2] = "TUE";
+    week[3] = "WED";
+    week[4] = "THU";
+    week[5] = "FRI";
+    week[6] = "SAT";
+
+    dateLabel.text = (date.getMonth() + 1) + "/" + date.getDate() + " [" +
+        week[date.getDay()] +"]";
 }
 
 // update steps label and fill
