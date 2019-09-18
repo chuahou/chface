@@ -122,7 +122,7 @@ function updateTime(event)
 // update previous day steps
 function changeDate()
 {
-    prevStepsLabel.text = "( " + stepsLabel.text + " )";
+    prevStepsLabel.text = "PREV: ( " + stepsLabel.text + " )";
 }
 
 // update steps label and fill
