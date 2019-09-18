@@ -1,3 +1,5 @@
+// --- IMPORTS ---
+
 import clock from "clock";
 import document from "document";
 import { HeartRateSensor } from "heart-rate";
@@ -6,6 +8,10 @@ import { me as appbit } from "appbit";
 import { battery } from "power";
 import { preferences } from "user-settings";
 import * as util from "../common/utils";
+
+
+
+// --- CONSTANTS ---
 
 // tick every second
 clock.granularity = "seconds";
@@ -24,6 +30,10 @@ const stepBoundary3 = 20000.0;
 // battery threshold to turn red
 const batteryThreshold = 40.0;
 
+
+
+// --- GUI elements ---
+
 // get elements to update
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
@@ -41,6 +51,10 @@ const batteryFill2 = document.getElementById("batteryFill2");
 
 // get initial widths
 const initWidth = timeFill.width;
+
+
+
+// --- MAIN ROUTINE ---
 
 // get and setup heart rate sensor
 if (HeartRateSensor)
@@ -77,9 +91,12 @@ clock.ontick = (event) =>
     updateBattery();
 };
 
-var prevMidnight = null;
+
+
+// --- HELPER FUNCTIONS ---
 
 // update time label and fill
+var prevMidnight = null;
 function updateTime(event)
 {
     // get hours, minutes and seconds
@@ -112,7 +129,8 @@ function updateTime(event)
     }
     else if (midnight.getDate() != prevMidnight.getDate())
     {
-        changeDate(event);
+        prevStepsLabel.text = "PREV: ( " + stepsLabel.text + " )";
+        setDate(event.date);
         prevMidnight = midnight;
     }
     
@@ -121,13 +139,6 @@ function updateTime(event)
     
     // update fill
     timeFill.width = initWidth * diff / msPerDay;
-}
-
-// update previous day steps and date
-function changeDate(event)
-{
-    prevStepsLabel.text = "PREV: ( " + stepsLabel.text + " )";
-    setDate(event.date);
 }
 
 // set date label
