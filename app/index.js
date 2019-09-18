@@ -28,6 +28,7 @@ const batteryThreshold = 40.0;
 const timeLabel = document.getElementById("timeLabel");
 const hrLabel = document.getElementById("hrLabel");
 const stepsLabel = document.getElementById("stepsLabel");
+const prevStepsLabel = document.getElementById("prevStepsLabel");
 const batteryLabel = document.getElementById("batteryLabel");
 const timeFill = document.getElementById("timeFill");
 const hrFill = document.getElementById("hrFill");
@@ -72,6 +73,8 @@ clock.ontick = (event) =>
     updateBattery();
 };
 
+var prevMidnight = null;
+
 // update time label and fill
 function updateTime(event)
 {
@@ -97,12 +100,29 @@ function updateTime(event)
     
     // get midnight
     let midnight = new Date(event.date.getFullYear(), event.date.getMonth(), event.date.getDate(), 0, 0, 0);
+
+    // check if date has changed
+    if (prevMidnight == null)
+    {
+        prevMidnight = midnight;
+    }
+    else if (midnight.getDate() != prevMidnight.getDate())
+    {
+        changeDate();
+        prevMidnight = midnight;
+    }
     
     // get time since midnight
     let diff = event.date.getTime() - midnight.getTime();
     
     // update fill
     timeFill.width = initWidth * diff / msPerDay;
+}
+
+// update previous day steps
+function changeDate()
+{
+    prevStepsLabel.text = "( " + stepsLabel.text + " )";
 }
 
 // update steps label and fill

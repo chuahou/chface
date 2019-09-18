@@ -24,14 +24,15 @@
     <rect class="fillRect" id="stepsFill2" y="183" fill="mediumblue" width="100" />
     <rect class="fillRect" id="stepsFill3" y="183" fill="royalblue" width="30" />
     <text class="label" id="stepsLabel" x="280" y="200" />
+    <text class="label" id="prevStepsLabel" x="280" y="223" font-size="18">( --- )</text>
     
     <!-- battery -->
-    <rect class="borderRectOuter" id="batteryBorderOuter" y="210" />
-    <rect class="borderRectInner" id="batteryBorderInner" y="211" />
-    <rect class="fillRect" id="batteryFill2" y="213" fill="darkred" />
-    <rect class="fillRect" id="batteryFill1" y="213" fill="green" />
-    <text class="label" id="batteryLabel" x="280" y="230" />
+    <rect class="borderRectOuter" id="batteryBorderOuter" y="230" />
+    <rect class="borderRectInner" id="batteryBorderInner" y="231" />
+    <rect class="fillRect" id="batteryFill2" y="233" fill="darkred" />
+    <rect class="fillRect" id="batteryFill1" y="233" fill="green" />
+    <text class="label" id="batteryLabel" x="280" y="250" />
     
     <!-- additional label -->
-    <text class="label" font-size="12" text-anchor="middle" y="250">WATCH OF PROMISED PROCRASTINATION</text>
+    <text class="label" font-size="12" text-anchor="middle" y="270">WATCH OF PROMISED PROCRASTINATION</text>
 </svg>
