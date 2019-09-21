@@ -19,7 +19,9 @@ and all this markup stuff.)
 2. Time bar representing how far in the day the current time is with vertical bars representing my sleep goal (7 am and 11 pm)
 3. HR with bar maxed at 220
 4. Steps with bar maxed at 10000, then overcharge once to 15000 and once again to 20000
-5. Battery meter
+5. Date and day
+6. Previous day's number of steps (only visible from second day of continuous use)
+7. Battery meter
 
 ## Fitbit link
 
